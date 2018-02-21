@@ -7,11 +7,33 @@ Vagrant.configure("2") do |config|
 
  end
 
-  config.vm.define "box2" do |box2|
+ config.vm.define "box2" do |box2|
 
          box2.vm.box="scotch/box"
 
          box2.vm.network :forwarded_port, guest: 22, host: 10222, id: "ssh"
+
+ #!/bin/bash
+	
+#Script to add a user to Linux system.
+	
+if [ $(id -u) -eq 0 ]; then
+
+	read -p "Enter username : " username
+	read -s -p "Enter password : " password
+	
+egrep "^$username" /etc/passwd >/dev/null
+	
+if [ $? -eq 0 ]; then
+	
+echo "$username exists!"
+
+exit
+	 1
+ 
+ 
+ 
+ 
  end
 end
 
